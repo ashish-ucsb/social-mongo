@@ -14,6 +14,12 @@ let UserController = {
     let users = await UserModel.find({});
     res.json(users);
   },
+  readPosts: async (req, res) => {
+    let posts = await UserModel.findOne({
+      username: req.params.username,
+    }).populate("posts");
+    res.json(posts);
+  },
   update: async (req, res) => {
     let updatedUser = await UserModel.findOneAndUpdate(
       { username: req.params.username },
