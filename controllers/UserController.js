@@ -14,6 +14,19 @@ let UserController = {
     let users = await UserModel.find({});
     res.json(users);
   },
+  update: async (req, res) => {
+    let updatedUser = await UserModel.findOneAndUpdate(
+      { username: req.params.username },
+      { $set: req.body }
+    );
+    res.json(updatedUser);
+  },
+  delete: async (req, res) => {
+    let deletedUser = await UserModel.deleteOne({
+      username: req.params.username,
+    });
+    res.json(deletedUser);
+  },
 };
 
 module.exports = UserController;

@@ -24,6 +24,8 @@ const UserController = require("./controllers/UserController");
 app.post("/users", UserController.create);
 app.get("/users", UserController.readAll);
 app.get("/users/:username", UserController.read);
+app.put("/users/:username", UserController.update);
+app.delete("/users/:username", UserController.delete);
 
 const port = 5000;
 app.listen(port, () => {
